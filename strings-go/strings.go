@@ -25,3 +25,20 @@ func ReverseString(word string) string {
 	}
 	return result
 }
+func CountOccurrence(word string, target byte) int {
+	count := 0
+	for i := 0; i < len(word); i++ {
+		if word[i] == target {
+			count++
+		}
+	}
+	return count
+}
+func Contains(word string, target byte) bool {
+	for i := 0; i < len(word); i++ {
+		if word[i] == target {
+			return true
+		}
+	}
+	return false
+}

@@ -105,3 +105,49 @@ func TestReverseString(t *testing.T) {
 		})
 	}
 }
+func TestCountOccurrence(t *testing.T) {
+	tests := []struct {
+		name string
+		word string
+		target byte
+		want int
+	}{
+		{"repeated character", "banana", 'a', 3},
+		{"two occurrences", "hello", 'l', 2},
+		{"one occurrence", "hello", 'h', 1},
+		{"character absent", "hello", 'z', 0},
+		{"empty string", "", 'a', 0},
+		{"empty target occurrence", "aaaa", 'a', 4},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := CountOccurrence(tt.word, tt.target)
+
+			if got != tt.want {
+				t.Errorf("CountOccurrence(%q %q) = %q, want %q", tt.word, tt.target, got, tt.target)
+			}
+		})
+	}
+}
+func TestContains(t *testing.T) {
+	tests := []struct {
+		name string
+		word string
+		target byte
+		want bool
+	}{
+		{"character exists", "hello", 'e', true},
+		{"character absent", "hello", 'z', false},
+		{"first character", "hello", 'h', true},
+		{"last character", "hello", 'o', true},
+		{"empty string", "", 'a', false},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t*testing.T) {
+			got := Contains(tt.word, tt.target)
+			if got != tt.want {
+				t.Errorf("Contains(%q %q) = %t, want %t", tt.word, tt.target, got, tt.want)
+			}
+		})
+	}
+}
