@@ -151,3 +151,42 @@ func TestContains(t *testing.T) {
 		})
 	}
 }
+func TestCountVowels(t *testing.T) {
+	tests := []struct {
+		word string
+		want int
+	}{
+		{"hello", 2},
+		{"banana", 3},
+		{"rhythm", 0},
+		{"", 0},
+		{"aeiou", 5},
+	}
+	for _, tt := range tests {
+		got := CountVowels(tt.word)
+		if got != tt.want {
+			t.Errorf("countVowels(%q) = %q, want %q", tt.word, got, tt.want)
+		}
+	}
+}
+func TestCountConsonants(t *testing.T) {
+	tests := []struct {
+		word string
+		want int
+	}{
+		{"hello", 3},
+   		{"banana", 3},
+   		{"rhythm", 6},
+    	{"", 0},
+    	{"aeiou", 0},
+    	{"APPLE", 3},
+    	{"HeLLo", 3},
+    	{"abc123!", 2},
+	}
+	for _, tt := range tests {
+		got := CountConsonants(tt.word)
+		if got != tt.want {
+			t.Errorf("CountConsonants(%q) = %d want %d", tt.word, got, tt.want)
+		}
+	}
+}

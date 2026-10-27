@@ -1,5 +1,7 @@
 package main
 
+import "unicode"
+
 func FirstCharacter(word string) string {
 	if len(word) == 0 {
 		return ""
@@ -41,4 +43,29 @@ func Contains(word string, target byte) bool {
 		}
 	}
 	return false
+}
+func CountVowels(word string) int {
+	count := 0
+	for _, r := range word {
+		if r == 'a' || r == 'e' || r == 'i' || r == 'o' || r == 'u' {
+			count++
+		}
+	}
+	return count
+}
+
+
+func CountConsonants(word string) int {
+	count := 0
+	for _, r := range word {
+		r = unicode.ToLower(r)
+
+		if !unicode.IsLetter(r) {
+			continue
+		}
+		if r != 'a' && r != 'e' && r != 'i' && r != 'o' && r != 'u' {
+			count++
+		}
+	}
+	return count
 }
